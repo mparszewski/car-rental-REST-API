@@ -3,6 +3,7 @@ package com.mparszewski.carrental.controller;
 import com.mparszewski.carrental.model.Address;
 import com.mparszewski.carrental.repository.AddressRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,12 +14,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CarController {
 
+    @Autowired
     private AddressRepository adresRepository;
 
     @GetMapping("/cars")
     public void saveAdres() {
         Address address = new Address();
-        address.setId(1);
         address.setCountry("Polska");
         address.setCity("Warszawa");
         address.setStreetNumber("13/5");

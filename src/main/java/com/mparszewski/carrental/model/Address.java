@@ -1,11 +1,11 @@
 package com.mparszewski.carrental.model;
 
+import com.sun.istack.NotNull;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
 @Entity
@@ -13,19 +13,24 @@ import javax.persistence.Table;
 public class Address {
 
     @Id
-    @Column(name = "id_adresu")
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id_adresu", length = 20)
     private int id;
 
-    @Column(name = "panstwo")
+    @NotNull
+    @Column(name = "panstwo", length = 20)
     private String country;
 
-    @Column(name = "miasto")
+    @NotNull
+    @Column(name = "miasto", length = 20)
     private String city;
 
-    @Column(name = "numer_ulicy")
+    @NotNull
+    @Column(name = "numer_ulicy", length = 20)
     private String streetNumber;
 
-    @Column(name = "kod_pocztowy")
+    @NotNull
+    @Column(name = "kod_pocztowy", length = 20)
     private String postalCode;
 
 }

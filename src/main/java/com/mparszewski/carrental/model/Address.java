@@ -5,6 +5,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+import java.util.List;
+
+import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
@@ -32,5 +35,12 @@ public class Address {
     @NotNull
     @Column(name = "kod_pocztowy", length = 20)
     private String postalCode;
+
+    @OneToMany(mappedBy = "address")
+    private List<Client> client;
+
+    @OneToOne(fetch = LAZY, optional = false)
+    @MapsId
+    private Location location;
 
 }

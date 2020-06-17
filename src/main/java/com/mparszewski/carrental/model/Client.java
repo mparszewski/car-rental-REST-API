@@ -7,7 +7,10 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
@@ -38,9 +41,6 @@ public class Client {
     @Column(name = "pesel", length = 11)
     private String pesel;
 
-    @Column(name = "numer_prawa_jazdy", length = 11)
-    private String drivingLicenseId;
-
     @NotNull
     @Column(name = "adres_email", length = 50)
     private String emailAddress;
@@ -58,6 +58,13 @@ public class Client {
     @Column(name = "branza", length = 30)
     private String trade;
 
-    @Column(name = "id_adresu")
-    private int addressId;
+    @OneToOne(mappedBy = "client", cascade = ALL, fetch = LAZY)
+    private DrivingLicense drivingLicense;
+
+    @ManyToOne
+    @JoinColumn(name = "numer_prawa_jazdy")
+    private Address address;
+
+    @OneToMany(mappedBy = "client")
+    private List<Reservation> reservations;
 }

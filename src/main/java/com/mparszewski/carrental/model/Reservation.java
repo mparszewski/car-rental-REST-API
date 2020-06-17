@@ -1,14 +1,13 @@
 package com.mparszewski.carrental.model;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-
 import java.util.Date;
+import java.util.List;
 
-import static javax.persistence.GenerationType.*;
+import static javax.persistence.FetchType.LAZY;
 
 @Data
 @Entity
@@ -26,7 +25,21 @@ public class Reservation {
     @Column(name = "planowany_koniec")
     private Date plannedFinish;
 
-    @NotNull
-    @Column(name = "id_samochodu")
-    private int carId;
+    @ManyToOne
+    @JoinColumn(name = "id_samochodu", nullable = false)
+    private Car car;
+
+    @ManyToOne
+    @JoinColumn(name = "id_klienta")
+    private Client client;
+
+    @OneToMany(mappedBy = "reservation")
+    private List<Damage> damages;
+
+    @OneToOne(fetch = LAZY, optional = false)
+    @MapsId
+    private Hire hire;
+
+    @OneToMany(mappedBy = "reservation")
+    private List<ReservationLocation> reservationLocations;
 }

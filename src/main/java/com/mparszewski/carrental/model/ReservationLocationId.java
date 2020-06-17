@@ -1,10 +1,15 @@
 package com.mparszewski.carrental.model;
 
-import javax.persistence.*;
+import lombok.EqualsAndHashCode;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Enumerated;
 import java.io.Serializable;
 
 import static javax.persistence.EnumType.STRING;
 
+@EqualsAndHashCode
 @Embeddable
 public class ReservationLocationId implements Serializable {
 
@@ -12,11 +17,9 @@ public class ReservationLocationId implements Serializable {
     @Column(name = "typ")
     private ReservationType reservationType;
 
-    @ManyToOne
-    @JoinColumn(name = "id_rezerwacji")
-    private Reservation reservation;
+    @Column(name = "id_rezerwacji")
+    private int reservationId;
 
-    @ManyToOne
-    @JoinColumn(name = "id_samochodu")
-    private Car car;
+    @Column(name = "id_samochodu")
+    private int carId;
 }

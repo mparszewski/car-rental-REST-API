@@ -33,9 +33,9 @@ public class Accessory {
 
     @ManyToOne
     @JoinColumn(name = "id_samochodu")
-    private Car carId;
+    private Car car;
 
     @ManyToOne
     @JoinColumn(name = "id_rezerwacji")
-    private Reservation reservationId;
+    private Reservation reservation;
 }

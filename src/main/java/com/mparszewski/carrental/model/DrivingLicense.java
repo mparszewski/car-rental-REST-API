@@ -7,6 +7,8 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.Date;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Data
 @Entity
 @Table(name = "prawo_jazdy")
@@ -37,7 +39,7 @@ public class DrivingLicense {
     @Column(name = "organ_wydajacy", length = 20)
     private String issuingAuthority;
 
-    @NotNull
-    @Column(name = "id_klienta")
-    private int clientId;
+    @OneToOne(fetch = LAZY, optional = false)
+    @MapsId
+    private Client client;
 }

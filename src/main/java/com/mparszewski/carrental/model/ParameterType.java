@@ -5,6 +5,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
@@ -29,4 +31,7 @@ public class ParameterType {
 
     @Column(name = "jednostka", length = 10)
     private String unit;
+
+    @ManyToMany(mappedBy = "parameterTypes")
+    private List<Car> cars;
 }

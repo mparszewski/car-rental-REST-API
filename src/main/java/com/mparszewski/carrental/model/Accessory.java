@@ -32,10 +32,6 @@ public class Accessory {
     private PriceTariff dailyPrice;
 
     @ManyToOne
-    @JoinColumn(name = "id_samochodu")
-    private Car car;
-
-    @ManyToOne
-    @JoinColumn(name = "id_rezerwacji")
-    private Reservation reservation;
+    @MapsId
+    private Hire hire;
 }

@@ -30,10 +30,7 @@ public class Damage {
     private String damageDescription;
 
     @ManyToOne
-    @JoinColumn(name = "id_samochodu", nullable = false)
-    private Car car;
-
-    @ManyToOne
-    @JoinColumn(name = "id_rezerwacji", nullable = false)
-    private Reservation reservation;
+    @MapsId
+//    @JoinColumn(name = "id_rezerwacji", nullable = false)
+    private Hire hire;
 }

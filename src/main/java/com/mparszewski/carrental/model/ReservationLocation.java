@@ -23,11 +23,7 @@ public class ReservationLocation {
     @ManyToOne
     @JoinColumn(name = "id_lokalizacji")
     private Location location;
-
-    @ManyToOne
-    @JoinColumn(name = "id_samochodu")
-    private Car car;
-
+    
     @ManyToOne
     @JoinColumn(name = "id_rezerwacji")
     private Reservation reservation;

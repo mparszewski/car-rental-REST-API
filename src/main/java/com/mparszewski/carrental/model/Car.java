@@ -46,13 +46,4 @@ public class Car {
 
     @OneToMany(mappedBy = "car")
     private List<Reservation> reservations;
-
-    @OneToMany(mappedBy = "car")
-    private List<Hire> hires;
-
-    @OneToMany(mappedBy = "car")
-    private List<Damage> damages;
-
-    @OneToMany(mappedBy = "car")
-    private List<ReservationLocation> reservationLocations;
 }

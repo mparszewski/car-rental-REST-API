@@ -33,9 +33,6 @@ public class Reservation {
     @JoinColumn(name = "id_klienta")
     private Client client;
 
-    @OneToMany(mappedBy = "reservation")
-    private List<Damage> damages;
-
     @OneToOne(fetch = LAZY, optional = false)
     @MapsId
     private Hire hire;

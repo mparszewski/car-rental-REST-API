@@ -5,6 +5,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static javax.persistence.EnumType.STRING;
 import static javax.persistence.FetchType.EAGER;
 
@@ -34,8 +36,10 @@ public class Hire {
     @MapsId
     private Reservation reservation;
 
-    @ManyToOne(fetch = EAGER, optional = false)
-    @MapsId
-    private Car car;
+    @OneToMany(mappedBy = "hire")
+    private List<Accessory> accessories;
+
+    @OneToMany(mappedBy = "hire")
+    private List<Damage> damages;
 
 }

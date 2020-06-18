@@ -40,6 +40,6 @@ public class DrivingLicense {
     private String issuingAuthority;
 
     @OneToOne(fetch = LAZY, optional = false)
-    @MapsId
+    @JoinColumn(name = "id_klienta")
     private Client client;
 }

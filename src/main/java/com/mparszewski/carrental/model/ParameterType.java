@@ -4,10 +4,7 @@ import com.sun.istack.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;
-
 import java.util.List;
-
-import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
 @Entity
@@ -15,7 +12,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class ParameterType {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id_parametru")
     private int parameterId;
 

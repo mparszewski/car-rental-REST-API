@@ -16,7 +16,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id_adresu", length = 20)
     private int id;
 
@@ -29,6 +28,10 @@ public class Address {
     private String city;
 
     @NotNull
+    @Column(name = "ulica", length = 20)
+    private String street;
+
+    @NotNull
     @Column(name = "numer_ulicy", length = 20)
     private String streetNumber;
 
@@ -39,7 +42,7 @@ public class Address {
     @OneToMany(mappedBy = "address")
     private List<Client> client;
 
-    @OneToOne(fetch = LAZY, optional = false, mappedBy = "address")
+    @OneToOne(fetch = LAZY, mappedBy = "address")
     private Location location;
 
 }

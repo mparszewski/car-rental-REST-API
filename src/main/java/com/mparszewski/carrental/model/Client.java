@@ -6,12 +6,12 @@ import lombok.Data;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
-import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
 @Entity
@@ -19,7 +19,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id_klienta")
     private int clientId;
 
@@ -62,9 +61,14 @@ public class Client {
     private DrivingLicense drivingLicense;
 
     @ManyToOne
-    @JoinColumn(name = "numer_prawa_jazdy")
+    @JoinColumn(name = "id_adresu")
     private Address address;
 
     @OneToMany(mappedBy = "client")
     private List<Reservation> reservations;
+
+    @PrePersist
+    void prePersist() {
+        this.registrationDate = Date.from(Instant.now());
+    }
 }

@@ -14,7 +14,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Damage {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id_uszkodzenia")
     private int damageId;
 

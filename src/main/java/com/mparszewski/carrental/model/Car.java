@@ -14,7 +14,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Car {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id_samochodu")
     private int carId;
 

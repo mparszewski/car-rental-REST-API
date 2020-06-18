@@ -14,7 +14,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Accessory {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id_akcesorium")
     private int accessoryId;
 

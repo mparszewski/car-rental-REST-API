@@ -4,11 +4,9 @@ import com.sun.istack.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;
-
 import java.util.List;
 
-import static javax.persistence.FetchType.*;
-import static javax.persistence.GenerationType.IDENTITY;
+import static javax.persistence.FetchType.LAZY;
 
 @Data
 @Entity
@@ -16,7 +14,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Location {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id_lokalizacji")
     private int locationId;
 

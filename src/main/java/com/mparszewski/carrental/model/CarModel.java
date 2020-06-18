@@ -14,7 +14,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class CarModel {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "model_samochodu", length = 30)
     private String model;
 

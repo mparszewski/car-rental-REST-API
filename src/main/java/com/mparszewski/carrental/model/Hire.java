@@ -4,11 +4,11 @@ import com.sun.istack.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;
-
 import java.util.List;
 
 import static javax.persistence.EnumType.STRING;
 import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.FetchType.LAZY;
 
 @Data
 @Entity
@@ -16,6 +16,9 @@ import static javax.persistence.FetchType.EAGER;
 public class Hire {
 
     @EmbeddedId
+    @AttributeOverrides({
+            @AttributeOverride(name = "reservationId", column = @Column(name = "id_rezerwacji", nullable = false)),
+            @AttributeOverride(name = "carId", column = @Column(name = "id_samochodu", nullable = false)) })
     private HireId hireId;
 
     @NotNull
@@ -32,11 +35,11 @@ public class Hire {
     @Column(name = "przebieg_po")
     private int mileageAfter;
 
-    @OneToOne(fetch = EAGER, optional = false)
-    @MapsId
+    @OneToOne(fetch = LAZY, optional = false)
+    @PrimaryKeyJoinColumn
     private Reservation reservation;
 
-    @OneToMany(mappedBy = "hire")
+    @OneToMany(mappedBy = "reservation")
     private List<Accessory> accessories;
 
     @OneToMany(mappedBy = "hire")

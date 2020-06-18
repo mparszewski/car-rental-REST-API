@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.*;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
@@ -29,8 +30,8 @@ public class Damage {
     @Column(name = "opis_uszkodzenia")
     private String damageDescription;
 
-    @ManyToOne
-    @MapsId
-//    @JoinColumn(name = "id_rezerwacji", nullable = false)
+    @ManyToOne(fetch = LAZY)
+    @JoinColumns({@JoinColumn(name = "id_rezerwacji", referencedColumnName = "id_rezerwacji", nullable = false),
+            @JoinColumn(name = "id_samochodu", referencedColumnName = "id_samochodu", nullable = false)})
     private Hire hire;
 }

@@ -46,7 +46,7 @@ public class Client {
     private String emailAddress;
 
     @NotNull
-    @Column(name = "numer_kontaktowy", length = 12)
+    @Column(name = "numer_kontaktowy", length = 19)
     private String phoneNumber;
 
     @Column(name = "nazwa", length = 50)

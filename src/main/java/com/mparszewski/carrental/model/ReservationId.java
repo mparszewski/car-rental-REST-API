@@ -12,8 +12,8 @@ import java.io.Serializable;
 public class ReservationId implements Serializable {
 
     @NotNull
-    @Column(name = "id_klienta")
-    private int clientId;
+    @Column(name = "id_samochodu")
+    private int carId;
 
     @NotNull
     @Column(name = "id_rezerwacji")

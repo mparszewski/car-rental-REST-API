@@ -15,6 +15,9 @@ import static javax.persistence.FetchType.LAZY;
 public class Reservation {
 
     @EmbeddedId
+    @AttributeOverrides({
+            @AttributeOverride(name = "reservationId", column = @Column(name = "id_rezerwacji", nullable = false)),
+            @AttributeOverride(name = "carId", column = @Column(name = "id_samochodu", nullable = false)) })
     private ReservationId reservationId;
 
     @Type(type = "timestamp")
@@ -25,16 +28,15 @@ public class Reservation {
     @Column(name = "planowany_koniec")
     private Date plannedFinish;
 
-    @ManyToOne
-    @JoinColumn(name = "id_samochodu", nullable = false)
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "id_samochodu", nullable = false, insertable = false, updatable = false)
     private Car car;
 
     @ManyToOne
     @JoinColumn(name = "id_klienta")
     private Client client;
 
-    @OneToOne(fetch = LAZY, optional = false)
-    @MapsId
+    @OneToOne(fetch = LAZY, mappedBy = "reservation")
     private Hire hire;
 
     @OneToMany(mappedBy = "reservation")

@@ -39,8 +39,7 @@ public class Address {
     @OneToMany(mappedBy = "address")
     private List<Client> client;
 
-    @OneToOne(fetch = LAZY, optional = false)
-    @MapsId
+    @OneToOne(fetch = LAZY, optional = false, mappedBy = "address")
     private Location location;
 
 }

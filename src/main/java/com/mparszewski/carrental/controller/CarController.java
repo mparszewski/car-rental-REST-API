@@ -1,11 +1,10 @@
 package com.mparszewski.carrental.controller;
 
-import com.mparszewski.carrental.model.Address;
-import com.mparszewski.carrental.repository.AddressRepository;
+import com.mparszewski.carrental.model.Car;
+import com.mparszewski.carrental.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -15,21 +14,11 @@ import java.util.List;
 public class CarController {
 
     @Autowired
-    private AddressRepository adresRepository;
+    private CarRepository carRepository;
 
     @GetMapping("/cars")
-    public void saveAdres() {
-        Address address = new Address();
-        address.setCountry("Polska");
-        address.setCity("Warszawa");
-        address.setStreetNumber("13/5");
-        address.setPostalCode("02-223");
-        adresRepository.save(address);
+    public List<Car> getAllCars() {
+        return carRepository.findAll();
     }
 
-
-    @GetMapping("/cars/save/{country}")
-    public List<Address> getAllAddresses(@PathVariable String country) {
-        return adresRepository.findAddressesByCountry(country);
-    }
 }

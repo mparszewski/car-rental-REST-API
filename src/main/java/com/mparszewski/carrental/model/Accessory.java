@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.*;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
@@ -31,7 +32,10 @@ public class Accessory {
     @JoinColumn(name = "cena_za_dzien", nullable = false)
     private PriceTariff dailyPrice;
 
-    @ManyToOne
-    @MapsId
-    private Hire hire;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumns({
+            @JoinColumn(name = "id_rezerwacji", referencedColumnName = "id_rezerwacji"),
+            @JoinColumn(name = "id_samochodu", referencedColumnName = "id_samochodu")
+    })
+    private Reservation reservation;
 }

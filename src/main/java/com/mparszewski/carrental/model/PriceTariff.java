@@ -11,8 +11,8 @@ import java.util.List;
 public class PriceTariff {
 
     @Id
-    @Column(name = "cena_za_dzien", length = 6, precision = 2)
-    private double priceTariff;
+    @Column(name = "cena_za_dzien")
+    private Double priceTariff;
 
     @OneToMany(mappedBy = "dailyPrice")
     private List<Car> cars;
